@@ -24,7 +24,7 @@ def sendmessae(keyname):
     try:
         # RC phone ip address and port number
         print('sent to rc phone ' + keyname)
-        mySocket.sendto(keyname.encode('utf-8'),('192.168.49.1',11039))
+        mySocket.sendto(keyname.encode('utf-8'),('192.168.49.1',12808))
         return keyname
     except Exception as inst:
         print(inst)
