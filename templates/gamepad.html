@@ -39,7 +39,7 @@
     <div id="gamepadDisplay"></div>
     <div id="LeaveRoom"><button onclick="leaveroom()">Disconnect</button></div>
     <script>
-        //<!--static pubic ip and port number for rasberry pi here  -->
+        <!--static pubic ip and port number for rasberry pi here  -->
         var socket = io.connect('https://0.0.0.0:2005/test')
         socket.on('redirect', function(destination) {
             window.location.href = destination;
@@ -77,70 +77,70 @@
         var repGP;
         $(".RT").on("click", function (e) {
             e.preventDefault();
-            sendMessage("RTP")
+            sendMessage("G1_RTP")
         });
 
         $(".LT").on("click", function (e) {
             e.preventDefault();
-            sendMessage("LTP")
+            sendMessage("G1_LTP")
         });
 
         $(".Y").on("click", function (e) {
             e.preventDefault();
-            sendMessage("YP")
+            sendMessage("G1_YP")
         });
 
         $(".A").on("click", function (e) {
             e.preventDefault();
-            sendMessage("AP")
+            sendMessage("G1_AP")
         });
 
         $(".B").on("click", function (e) {
             e.preventDefault();
-            sendMessage("BP")
+            sendMessage("G1_BP")
         });
 
         $(".X").on("click", function (e) {
             e.preventDefault();
-            sendMessage("XP")
+            sendMessage("G1_XP")
         });
 
         $(".START").on("click", function (e) {
             e.preventDefault();
-            sendMessage("STARTP")
+            sendMessage("G1_STARTP")
         });
 
         $(".BACK").on("click", function (e) {
             e.preventDefault();
-            sendMessage("BACKP")
+            sendMessage("G1_BACKP")
         });
 
         $(".RS").on("click", function (e) {
             e.preventDefault();
-            sendMessage("RSP")
+            sendMessage("G1_RSP")
         });
 
         $(".LS").on("click", function (e) {
             e.preventDefault();
-            sendMessage("LSP")
+            sendMessage("G1_LSP")
         });
         $(".DLEFT").on("click", function (e) {
             e.preventDefault();
-            sendMessage("DLEFTP")
+            sendMessage("G1_DLEFTP")
         });
         $(".DRIGHT").on("click", function (e) {
             e.preventDefault();
-            sendMessage("DRIGHTP")
+            sendMessage("G1_DRIGHTP")
         });
 
         $(".DUP").on("click", function (e) {
             e.preventDefault();
-            sendMessage("DUP")
+            sendMessage("G1_DUP")
         });
 
         $(".DDOWN").on("click", function (e) {
             e.preventDefault();
-            sendMessage("DDOWN")
+            sendMessage("G1_DDOWN")
         });
 
 
@@ -152,91 +152,44 @@
         function reportOnGamepad() {
             var gp = navigator.getGamepads()[0];
             var html = "";
-            var concat = "";
             html += "id: " + gp.id + "<br/>";
             //getting the button values
             for (var i = 0; i < gp.buttons.length; i++) {
                 html += "Button " + (i + 1) + ": ";
                 if (gp.buttons[i].pressed) html += " pressed";
                 html += "<br/>";
-                if (gp.buttons[0].pressed){
-                    concat += "_AP";
-                } else{
-                    concat += "_AR";
-                }
-                if (gp.buttons[1].pressed){
-                    concat += "_BP";
-                } else{
-                    concat += "_BR";
-                }
-                if (gp.buttons[2].pressed){
-                    concat += "_XP";
-                } else{
-                    concat += "_XR";
-                }
-                if (gp.buttons[3].pressed){
-                    concat += "_YP";
-                }else{
-                    concat += "_YR";
-                }
-                if (gp.buttons[4].pressed){
-                    concat += "_LBP";
-                }else{
-                    concat += "_LBR";
-                }
-                if (gp.buttons[5].pressed){
-                    concat += "_RBP";
-                }else{
-                    concat += "_RBR";
-                }
-                if (gp.buttons[6].pressed){
-                    concat += "_LTP";
-                }else{
-                    concat += "_LTR";
-                }
-                if (gp.buttons[7].pressed){
-                    concat += "_RTP";
-                }else{
-                    concat += "_RTR";
-                }
-                if (gp.buttons[8].pressed){
-                    concat += "_BACKP";
-                }else{
-                    concat += "_BACKR";
-                }
-                if (gp.buttons[9].pressed){
-                    concat += "_STARTP";
-                }else{
-                    concat += "_STARTR";
-                }
-                if (gp.buttons[10].pressed){
-                    concat += "_LSP";
-                }else{
-                    concat += "_LSR";
-                }
-                if (gp.buttons[11].pressed){
-                    concat += "_RSP";
-                }else{
-                    concat += "_RSR";
-                }
-                if (gp.buttons[12].pressed){
-                    concat += "_DUP";
-                }
-                if (gp.buttons[13].pressed){
-                    concat += "_DDOWN";
-                }
-                if (gp.buttons[14].pressed){
-                    concat += "_DLEFT";
-                }
-                if (gp.buttons[15].pressed){
-                    concat += "_DRIGHT";
-                }
-                concat += "_jrx" + gp.axes[0].toFixed(3);
-                concat += "_jry" + gp.axes[1].toFixed(3);
-                concat += "_jlx" + gp.axes[2].toFixed(3);
-                concat += "_jly" + gp.axes[3].toFixed(3);
-                sendMessage(concat);
-                concat = "";
+                if (gp.buttons[0].pressed)
+                    sendMessage("G1_AP")
+                if (gp.buttons[1].pressed)
+                    sendMessage("G1_BP")
+                if (gp.buttons[2].pressed)
+                    sendMessage("G1_XP")
+                if (gp.buttons[3].pressed)
+                    sendMessage("G1_YP")
+                if (gp.buttons[4].pressed)
+                    sendMessage("G1_LBP")
+                if (gp.buttons[5].pressed)
+                    sendMessage("G1_RBP")
+                if (gp.buttons[6].pressed)
+                    sendMessage("G1_LTP")
+                if (gp.buttons[7].pressed)
+                    sendMessage("G1_RTP")
+                if (gp.buttons[8].pressed)
+                    sendMessage("G1_BACKP")
+                if (gp.buttons[9].pressed)
+                    sendMessage("G1_STARTP")
+                if (gp.buttons[10].pressed)
+                    sendMessage("G1_LSP")
+                if (gp.buttons[11].pressed)
+                    sendMessage("G1_RSP")
+                if (gp.buttons[12].pressed)
+                    sendMessage("G1_DUP")
+                if (gp.buttons[13].pressed)
+                    sendMessage("G1_DDOWN")
+                if (gp.buttons[14].pressed)
+                    sendMessage("G1_DLEFT")
+                if (gp.buttons[15].pressed)
+                    sendMessage("G1_DRIGHT")
 
             }
             //getting the stick values
@@ -264,7 +217,7 @@
                     hasGP = true;
                     $("#gamepadPrompt").html("Gamepad connected!");
                     console.log("connection event");
-                    repGP = window.setInterval(reportOnGamepad, 500);
+                    repGP = window.setInterval(reportOnGamepad, 100);
                 });
 
                 $(window).on("gamepaddisconnected", function () {
